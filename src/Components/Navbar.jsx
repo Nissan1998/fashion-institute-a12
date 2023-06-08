@@ -18,7 +18,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar container mx-auto max-w-sm fixed z-10 bg-opacity-40 bg-black text-white md:max-w-screen-2xl md:mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -41,17 +41,23 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {options}
+            <p className="text-black">{options}</p>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <div>
+          <Link className="btn uppercase btn-ghost text-xl">
+            Fashion Institute
+          </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{options}</ul>
       </div>
       <div className="navbar-end">
         <Link to="/login">
-          <button className="btn">Login</button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+            Login
+          </button>
         </Link>
       </div>
     </div>
