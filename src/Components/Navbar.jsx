@@ -55,7 +55,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <Link to="/login">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <button className="bg-cyan-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
             Login
           </button>
         </Link>
