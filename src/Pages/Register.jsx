@@ -1,14 +1,23 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const {
     register,
     handleSubmit,
+    watch,
 
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div>
       <div>
@@ -21,6 +30,7 @@ const Register = () => {
         >
           <div className="md:w-1/2 relative bg-purple-500 bg-opacity-20 text-white p-8 rounded shadow-md">
             <h2 className="text-3xl text-center font-bold mb-6">Register</h2>
+
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4">
                 <label
@@ -91,16 +101,37 @@ const Register = () => {
                   Password
                 </label>
                 <input
-                  {...register("password", { required: true })}
-                  aria-invalid={errors.password ? "true" : "false"}
-                  type="password"
+                  {...register("password", {
+                    required: "Password is required",
+
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters long",
+                    },
+                    pattern: {
+                      value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                      message:
+                        "Password must contain at least one uppercase, one lowercase ,one number and a special Character",
+                    },
+                  })}
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   className="w-full text-black px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your password"
                 />
-                {errors.password?.type === "required" && (
-                  <p className="text-red-500 font-semibold" role="alert">
-                    Password is required
+                <p
+                  className="cursor-pointer  absolute right-10 bottom-[44%]"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <FaEye className="top-1/2 text-black" />
+                  ) : (
+                    <FaEyeSlash className=" top-1/2 text-black" />
+                  )}
+                </p>
+                {errors.password && (
+                  <p className="text-red-500 font-semibold">
+                    {errors.password.message}
                   </p>
                 )}
                 <label
@@ -110,16 +141,19 @@ const Register = () => {
                   Confirm Password
                 </label>
                 <input
-                  {...register("confirmPassword", { required: true })}
-                  aria-invalid={errors.confirmPassword ? "true" : "false"}
+                  {...register("confirmPassword", {
+                    required: "Confirm Password is required",
+                    validate: (value) =>
+                      value === watch("password") || "Passwords do not match",
+                  })}
                   type="password"
                   id="password"
                   className="w-full text-black px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your Confirm password"
                 />
-                {errors.confirmPassword?.type === "required" && (
-                  <p className="text-red-500 font-semibold" role="alert">
-                    Confirm Password is required
+                {errors.confirmPassword && (
+                  <p className="text-red-500 font-semibold">
+                    {errors.confirmPassword.message}
                   </p>
                 )}
               </div>

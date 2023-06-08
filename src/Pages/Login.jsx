@@ -64,11 +64,14 @@ const Login = () => {
                 placeholder="Enter your password"
                 required
               />
-              <p className="cursor-pointer" onClick={togglePasswordVisibility}>
+              <p
+                className="cursor-pointer absolute right-10 bottom-[49%]"
+                onClick={togglePasswordVisibility}
+              >
                 {showPassword ? (
-                  <FaEye className="absolute right-10 top-1/2 text-black" />
+                  <FaEye className="top-1/2 text-black" />
                 ) : (
-                  <FaEyeSlash className="absolute right-10 top-1/2 text-black" />
+                  <FaEyeSlash className=" top-1/2 text-black" />
                 )}
               </p>
             </div>
