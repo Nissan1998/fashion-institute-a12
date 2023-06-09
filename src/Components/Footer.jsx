@@ -1,8 +1,14 @@
+import footerImg from "../assets/images/footer.jpg";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <div>
-      <footer className="footer p-10 bg-neutral text-neutral-content">
+      <footer
+        style={{
+          backgroundImage: `url(${footerImg})`,
+        }}
+        className="footer p-10  text-neutral-content"
+      >
         <div className="max-w-screen-xl mx-auto">
           <img
             className="w-80"

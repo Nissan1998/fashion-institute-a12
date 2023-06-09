@@ -58,7 +58,7 @@ const Register = () => {
     <div>
       <div>
         <div
-          className="min-h-max p-20 md:flex md:flex-row items-center justify-center bg-cover"
+          className="min-h-max p-24 md:flex md:flex-row items-center justify-center bg-cover"
           style={{
             backgroundImage:
               "url('https://img.freepik.com/free-vector/realistic-style-technology-particle-background_23-2148426704.jpg')",

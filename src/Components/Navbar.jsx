@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
-
+import logo from "../assets/images/fashion.png";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -48,10 +48,11 @@ const Navbar = () => {
             <p className="text-black">{options}</p>
           </ul>
         </div>
-        <div>
-          <Link className="btn uppercase btn-ghost text-xl">
-            Fashion Institute
+        <div className="flex  items-center justify-items-center p-2">
+          <Link className="btn uppercase btn-ghost text-xl w-28">
+            <img src={logo} alt="" />
           </Link>
+          <p className="text-xl font-bold">Fashion Institute</p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -74,13 +75,13 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleLogout}
-            className="bg-cyan-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
             Logout
           </button>
         ) : (
           <Link to="/login">
-            <button className="bg-cyan-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
               Login
             </button>
           </Link>
