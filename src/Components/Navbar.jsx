@@ -48,11 +48,11 @@ const Navbar = () => {
             <p className="text-black">{options}</p>
           </ul>
         </div>
-        <div className="flex  items-center justify-items-center p-2">
-          <Link className="btn uppercase btn-ghost text-xl w-28">
+        <div className="md:flex  items-center justify-items-center p-2">
+          <Link className="btn uppercase btn-ghost text-xl  w-16 md:w-28">
             <img src={logo} alt="" />
           </Link>
-          <p className="text-xl font-bold">Fashion Institute</p>
+          <p className="text-xl font-bold hidden md:flex">Fashion Institute</p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

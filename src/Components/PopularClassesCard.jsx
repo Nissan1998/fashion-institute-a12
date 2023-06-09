@@ -1,33 +1,36 @@
 import React from "react";
+import LazyLoad from "react-lazy-load";
 
 const PopularClassesCard = ({ classes }) => {
   return (
     <div>
       <div className="bg-gray-100 py-8">
-        <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto  px-4 sm:px-6 lg:px-8">
           <h2
             className="text-3xl font-semi text-center font-bold  underline decoration-wavy
           bold text-gray-800 mb-4"
           >
             Popular Classes
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 ">
             {classes?.map((classData, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition duration-300 ease-in-out"
               >
-                <img
-                  src={classData.image}
-                  alt={classData.name}
-                  className="w-full h-52 object-cover mb-4 rounded-2xl"
-                />
+                <LazyLoad>
+                  <img
+                    src={classData?.image}
+                    alt={classData?.name}
+                    className="w-full h-52 object-cover mb-4 rounded-2xl"
+                  />
+                </LazyLoad>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {classData.name}
                 </h3>
-                <p className="text-gray-600 mb-2">{classData.duration}</p>
+                <p className="text-gray-600 mb-2">{classData?.duration}</p>
                 <p className="text-gray-600 mb-2">
-                  Total Students: {classData.total_students}
+                  Total Students: {classData?.total_students}
                 </p>
                 <div className="flex items-center">
                   <svg
