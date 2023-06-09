@@ -10,9 +10,9 @@ const Footer = () => {
             alt=""
           />
           <p className="ml-10 text-center">
-            ACME Industries Ltd.
+            The Fashion Learning Institute.
             <br />
-            Providing reliable tech since 1992
+            Providing reliable teaching since 2000
           </p>
         </div>
         <div className="max-w-screen-xl mx-auto">
