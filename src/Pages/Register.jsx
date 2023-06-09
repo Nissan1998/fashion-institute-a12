@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("login page location", location);
+  const from = location.state?.from?.pathname || "/";
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const { createUser } = useContext(AuthContext);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -12,11 +20,39 @@ const Register = () => {
     register,
     handleSubmit,
     watch,
-
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+
+    // create user.....
+    createUser(data.email, data.password)
+      .then((result) => {
+        const newUser = result.user;
+        handleUserData(newUser, data.name, data.photo);
+
+        navigate(from, { replace: true });
+        setError("");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.message) {
+          setError("The User Already Exist");
+        }
+      });
+  };
+  const handleUserData = (user, name, photoURL) => {
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photoURL,
+    })
+      .then(() => {
+        console.log("user name updated");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+      });
   };
   return (
     <div>
@@ -30,6 +66,9 @@ const Register = () => {
         >
           <div className="md:w-1/2 relative bg-purple-500 bg-opacity-20 text-white p-8 rounded shadow-md">
             <h2 className="text-3xl text-center font-bold mb-6">Register</h2>
+            <p className="text-xl text-center font-bold text-red-600">
+              {error}
+            </p>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4">

@@ -1,17 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("login page location", location);
+  const from = location.state?.from?.pathname || "/";
+
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+        if (error.message == "Firebase: Error (auth/user-not-found).") {
+          return setError("The User is Not Exist");
+        } else if (error.message == "Firebase: Error (auth/invalid-email).") {
+          setError("");
+        } else {
+          setError("Your Given Password is Wrong");
+        }
+      });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -27,6 +54,9 @@ const Login = () => {
       >
         <div className="md:w-1/2  relative bg-purple-500 bg-opacity-20 text-white p-8 rounded shadow-md">
           <h2 className="text-3xl text-center font-bold mb-6">Login</h2>
+          <p className="text-lg text-center text-red-600 font-semibold">
+            **{error}**
+          </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label

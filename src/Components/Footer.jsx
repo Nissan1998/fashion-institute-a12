@@ -1,10 +1,8 @@
-import React from "react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <div>
-      <footer className="footer p-10 bg-neutral text-neutral-content mt-14">
+      <footer className="footer p-10 bg-neutral text-neutral-content">
         <div className="max-w-screen-xl mx-auto">
           <img
             className="w-80"

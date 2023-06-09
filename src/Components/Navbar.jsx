@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const options = (
     <>
       <li>
@@ -12,11 +16,11 @@ const Navbar = () => {
       <li>
         <Link> Classes</Link>
       </li>
-      <li>
-        <Link>Dashboard</Link>
-      </li>
     </>
   );
+  const handleLogout = () => {
+    return logOut();
+  };
   return (
     <div className="navbar container mx-auto max-w-sm fixed z-10 bg-opacity-40 bg-black text-white md:max-w-screen-2xl md:mx-auto">
       <div className="navbar-start">
@@ -51,14 +55,36 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{options}</ul>
+        <ul className="menu menu-horizontal px-1 font-semibold">{options}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="bg-cyan-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-            Login
+        {user && (
+          <li className="list-none mr-5 font-semibold">
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+        )}
+        {user && (
+          <img
+            title={user?.displayName}
+            className="btn-circle mr-3"
+            src={user?.photoURL}
+            alt=""
+          />
+        )}
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="bg-cyan-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            Logout
           </button>
-        </Link>
+        ) : (
+          <Link to="/login">
+            <button className="bg-cyan-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
