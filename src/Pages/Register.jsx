@@ -3,9 +3,17 @@ import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
-import { updateProfile } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import app from "../Firebase/firebase.config";
 
 const Register = () => {
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
   console.log("login page location", location);
@@ -54,6 +62,19 @@ const Register = () => {
         setError(error.message);
       });
   };
+
+  // googleRegister-------------
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        setError("");
+        const user = result.user;
+        navigate(from, { replace: true });
+        console.log(user);
+      })
+      .catch((error) => {});
+  };
+
   return (
     <div>
       <div>
@@ -211,6 +232,7 @@ const Register = () => {
               <p className="text-center mb-4">Or Continue With:</p>
               <div className="flex justify-center">
                 <button
+                  onClick={handleGoogleSignIn}
                   type="button"
                   className="flex items-center  text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mr-2"
                 >

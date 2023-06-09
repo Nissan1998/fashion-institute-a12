@@ -1,0 +1,74 @@
+{
+  "classes": [
+    {
+      "image": "https://i.ibb.co/bPQGRF0/3378.jpg",
+      "name": "Fashion Illustration",
+      "duration": "8 weeks",
+      "total_students": 50,
+      "rating": 4.5
+    },
+    {
+      "image": "https://i.ibb.co/zGCcDRg/2102-i305-033-realistic-sewing-machine.jpg",
+      "name": "Sewing and Garments",
+      "duration": "12 weeks",
+      "total_students": 80,
+      "rating": 4.2
+    },
+    {
+      "image": "https://i.ibb.co/RY2Fv5D/cropped-portrait-young-woman-sewing-dress-isolated-white-background.jpg",
+      "name": "Fashion Draping",
+      "duration": "10 weeks",
+      "total_students": 35,
+      "rating": 4.8
+    },
+    {
+      "image": "https://i.ibb.co/Ycps7QM/pd157-element-set-gloy-19.jpg",
+      "name": "Fashion History",
+      "duration": "6 weeks",
+      "total_students": 60,
+      "rating": 4.3
+    },
+    {
+      "image": "https://example.com/fashion-merchandising.jpg",
+      "name": "Fashion Merchandising",
+      "duration": "8 weeks",
+      "total_students": 70,
+      "rating": 4.6
+    },
+    {
+      "image": "https://example.com/textile-design.jpg",
+      "name": "Textile Design",
+      "duration": "10 weeks",
+      "total_students": 45,
+      "rating": 4.4
+    },
+    {
+      "image": "https://example.com/fashion-styling.jpg",
+      "name": "Fashion Styling",
+      "duration": "8 weeks",
+      "total_students": 55,
+      "rating": 4.7
+    },
+    {
+      "image": "https://example.com/fashion-branding-marketing.jpg",
+      "name": "Fashion Branding and Marketing",
+      "duration": "12 weeks",
+      "total_students": 75,
+      "rating": 4.1
+    },
+    {
+      "image": "https://example.com/fashion-business-entrepreneurship.jpg",
+      "name": "Fashion Business and Entrepreneurship",
+      "duration": "10 weeks",
+      "total_students": 40,
+      "rating": 4.9
+    },
+    {
+      "image": "https://example.com/fashion-portfolio-development.jpg",
+      "name": "Fashion Portfolio Development",
+      "duration": "6 weeks",
+      "total_students": 65,
+      "rating": 4.0
+    }
+  ]
+}
