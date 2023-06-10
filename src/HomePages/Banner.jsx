@@ -2,6 +2,7 @@ import LazyLoad from "react-lazy-load";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import cover from "../assets/images/cover.png";
+import cover1 from "../assets/images/summer.png";
 
 const Banner = () => {
   return (
@@ -11,6 +12,11 @@ const Banner = () => {
       emulateTouch={true}
       infiniteLoop={true}
     >
+      <div className="flex">
+        <LazyLoad>
+          <img src={cover1} />
+        </LazyLoad>
+      </div>
       <div className="flex">
         <LazyLoad>
           <img src={cover} />

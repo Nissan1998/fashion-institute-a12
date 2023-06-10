@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const auth = getAuth(app);
@@ -37,6 +38,13 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const newUser = result.user;
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Registration has been Successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
         handleUserData(newUser, data.name, data.photo);
 
         navigate(from, { replace: true });

@@ -5,70 +5,80 @@
       "name": "Fashion Illustration",
       "duration": "8 weeks",
       "total_students": 50,
-      "rating": 4.5
+      "rating": 4.5,
+      "price": 80
     },
     {
       "image": "https://i.ibb.co/zGCcDRg/2102-i305-033-realistic-sewing-machine.jpg",
       "name": "Sewing and Garments",
       "duration": "12 weeks",
       "total_students": 80,
-      "rating": 4.2
+      "rating": 4.2,
+      "price": 100
     },
     {
       "image": "https://houseofdezign.com/wp-content/uploads/2021/11/1.jpg",
       "name": "Fashion Draping",
       "duration": "10 weeks",
       "total_students": 35,
-      "rating": 4.8
+      "rating": 4.8,
+      "price": 56
     },
     {
       "image": "https://i.ibb.co/Ycps7QM/pd157-element-set-gloy-19.jpg",
       "name": "Fashion History",
       "duration": "6 weeks",
       "total_students": 60,
-      "rating": 4.3
+      "rating": 4.3,
+      "price": 62
     },
     {
       "image": "https://i.ibb.co/JHVNNKM/portrait-male-personal-shopper-working.jpg",
       "name": "Fashion Merchandising",
       "duration": "8 weeks",
       "total_students": 70,
-      "rating": 4.6
+      "rating": 4.6,
+      "price": 75
     },
     {
       "image": "https://i.ibb.co/JvK4nLL/1178.jpg",
       "name": "Textile Design",
       "duration": "10 weeks",
       "total_students": 45,
-      "rating": 4.4
+      "rating": 4.4,
+      "price": 65
     },
     {
       "image": "https://i.ibb.co/bzYKX06/8141.jpg",
-      "name": "Fashion Styling",
+      "name": "Fashion Styling & Designing",
       "duration": "8 weeks",
       "total_students": 55,
-      "rating": 4.7
+      "rating": 4.7,
+      "price": 70
     },
     {
       "image": "https://i0.wp.com/textilelearner.net/wp-content/uploads/2021/05/fashion-marketing-strategy.jpg?resize=600%2C400&ssl=1",
       "name": "Fashion Branding and Marketing",
       "duration": "12 weeks",
       "total_students": 75,
-      "rating": 4.1
+      "rating": 4.1,
+      "price": 55
     },
     {
       "image": "https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_568,c_scale/jackets/9781501334245.jpg",
       "name": "Fashion Business and Entrepreneurship",
       "duration": "10 weeks",
       "total_students": 40,
-      "rating": 4.9
+      "rating": 4.9,
+      "price": 85
     },
     {
       "image": "https://www.designersnexus.com/wp-content/uploads/Article-Portfolio.png",
       "name": "Fashion Portfolio Development",
       "duration": "6 weeks",
       "total_students": 65,
-      "rating": 4.0
+      "rating": 4.0,
+      "price": 99
     }
   ]
 }
