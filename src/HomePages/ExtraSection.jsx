@@ -38,7 +38,7 @@ const ExtraSection = () => {
             Experience the difference and embrace a brighter future with
             [Fashion Institute].
           </p>
-          <div className="text-blue-800 font-bold">
+          <div className="text-blue-700 font-bold">
             <div className="mt-5">
               <div className="flex justify-between">
                 <p>Practical Knowledge</p>
