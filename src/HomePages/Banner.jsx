@@ -1,6 +1,7 @@
 import LazyLoad from "react-lazy-load";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import cover from "../assets/images/cover.png";
 
 const Banner = () => {
   return (
@@ -12,7 +13,7 @@ const Banner = () => {
     >
       <div className="flex">
         <LazyLoad>
-          <img src="https://i.ibb.co/xJb354J/Blue-Pink-Modern-Special-Offer-Sale-Banner.png" />
+          <img src={cover} />
         </LazyLoad>
       </div>
       <div>
