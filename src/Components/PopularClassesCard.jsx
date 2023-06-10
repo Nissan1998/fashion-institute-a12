@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import LazyLoad from "react-lazy-load";
+import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 
 const PopularClassesCard = ({ classes }) => {
+  const { darkMode } = useContext(AuthContext);
   return (
     <div>
-      <div className="bg-gray-100 py-8">
+      <div className={`${darkMode ? "bg-slate-800" : "bg-gray-100"} py-8`}>
         <div className="max-w-5xl mx-auto  px-4 sm:px-6 lg:px-8">
           <h2
-            className="text-3xl font-semi text-center font-bold  underline decoration-wavy
-          bold text-gray-800 mb-4"
+            className={`text-3xl font-semi text-center font-bold  underline decoration-wavy
+          bold ${darkMode ? "text-white" : "text-gray-800"} mb-4`}
           >
             Popular Classes
           </h2>

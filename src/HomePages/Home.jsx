@@ -1,12 +1,20 @@
+import { useContext } from "react";
 import Banner from "./Banner";
 import PopularClassSection from "./PopularClassSection";
+import PopularInstructorSection from "./PopularInstructorSection";
+import ExtraSection from "./ExtraSection";
+import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 
 const Home = () => {
+  const { darkMode } = useContext(AuthContext);
   return (
-    <div className="  ">
+    <div>
       <Banner></Banner>
       <PopularClassSection></PopularClassSection>
-      <h3>This is home contents</h3>
+      <PopularInstructorSection></PopularInstructorSection>
+      <div className={`${darkMode ? "bg-slate-800" : "bg-base-200"} p-20`}>
+        <ExtraSection></ExtraSection>
+      </div>
     </div>
   );
 };

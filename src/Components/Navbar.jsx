@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import logo from "../assets/images/fashion.png";
+import { FaSun, FaMoon } from "react-icons/fa";
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, toggleDarkMode, darkMode } = useContext(AuthContext);
 
   const options = (
     <>
@@ -53,6 +54,14 @@ const Navbar = () => {
             <img src={logo} alt="" />
           </Link>
           <p className="text-xl font-bold hidden md:flex">Fashion Institute</p>
+          <button
+            className={`px-4 py-2 rounded-full ml-2 ${
+              darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+            }`}
+            onClick={toggleDarkMode}
+          >
+            {darkMode ? <FaMoon /> : <FaSun />}
+          </button>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

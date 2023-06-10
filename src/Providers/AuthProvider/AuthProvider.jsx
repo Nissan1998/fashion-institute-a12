@@ -17,7 +17,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user)
+  console.log(user);
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
@@ -47,12 +47,20 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   const authInfo = {
     user,
     loading,
     createUser,
     signIn,
     logOut,
+    darkMode,
+    toggleDarkMode,
   };
 
   return (
