@@ -47,6 +47,14 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <p className="text-black">{options}</p>
+            <button
+              className={` px-4 py-2 rounded-full ml-2 ${
+                darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+              }`}
+              onClick={toggleDarkMode}
+            >
+              {darkMode ? <FaMoon /> : <FaSun />}
+            </button>
           </ul>
         </div>
         <div className="md:flex  items-center justify-items-center p-2">
@@ -55,7 +63,7 @@ const Navbar = () => {
           </Link>
           <p className="text-xl font-bold hidden md:flex">Fashion Institute</p>
           <button
-            className={`px-4 py-2 rounded-full ml-2 ${
+            className={` hidden md:flex px-4 py-2 rounded-full ml-2 ${
               darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
             }`}
             onClick={toggleDarkMode}

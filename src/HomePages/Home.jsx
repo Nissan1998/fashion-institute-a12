@@ -12,7 +12,9 @@ const Home = () => {
       <Banner></Banner>
       <PopularClassSection></PopularClassSection>
       <PopularInstructorSection></PopularInstructorSection>
-      <div className={`${darkMode ? "bg-slate-800" : "bg-base-200"} p-20`}>
+      <div
+        className={`${darkMode ? "bg-slate-800" : "bg-base-200"} p-10 md:p-20`}
+      >
         <ExtraSection></ExtraSection>
       </div>
     </div>

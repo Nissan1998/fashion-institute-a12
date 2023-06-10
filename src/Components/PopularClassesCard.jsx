@@ -16,25 +16,25 @@ const PopularClassesCard = ({ classes }) => {
             Popular Classes
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 ">
-            {classes?.map((classData, index) => (
+            {classes?.map((item, index) => (
               <Tilt key={index}>
                 <div
                   key={index}
-                  className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition duration-300 ease-in-out"
+                  className="bg-white h-full rounded-lg shadow-md p-6 transform hover:scale-105 transition duration-300 ease-in-out"
                 >
                   <LazyLoad>
                     <img
-                      src={classData?.image}
-                      alt={classData?.name}
+                      src={item?.image}
+                      alt={item?.name}
                       className="w-full h-52 object-cover mb-4 rounded-2xl"
                     />
                   </LazyLoad>
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {classData.name}
+                    {item.name}
                   </h3>
-                  <p className="text-gray-600 mb-2">{classData?.duration}</p>
+                  <p className="text-gray-600 mb-2">{item?.duration}</p>
                   <p className="text-gray-600 mb-2">
-                    Total Students: {classData?.total_students}
+                    Total Students: {item?.total_students}
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex">
@@ -49,10 +49,10 @@ const PopularClassesCard = ({ classes }) => {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <p className="text-yellow-500">{classData.rating}</p>
+                      <p className="text-yellow-500">{item.rating}</p>
                     </div>
                     <p className="rounded-full bg-blue-700 px-4 text-white font-semibold">
-                      ${classData?.price}
+                      ${item?.price}
                     </p>
                   </div>
                 </div>

@@ -1,17 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import PopularInstructorCard from "../Components/PopularInstructorCard";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
-import Tilt from "react-parallax-tilt";
+import usePopularInstructors from "../Hooks/usePopularInstructors";
 
 const PopularInstructorSection = () => {
-  const [instructors, setInstructors] = useState([]);
   const { darkMode } = useContext(AuthContext);
-  console.log(instructors);
-  useEffect(() => {
-    fetch("popularInstructors.json")
-      .then((res) => res.json())
-      .then((data) => setInstructors(data.instructors));
-  }, []);
+  const [instructors] = usePopularInstructors();
   return (
     <div
       className={`max-w-9xl mx-auto ${

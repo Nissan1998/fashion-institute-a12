@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PopularClassesCard from "../Components/PopularClassesCard";
+import usePopularClass from "../Hooks/usePopularClass";
 
 const PopularClassSection = () => {
-  const [classes, setClasses] = useState([]);
-  useEffect(() => {
-    fetch("popularClasses.json")
-      .then((res) => res.json())
-      .then((data) => setClasses(data.classes));
-  }, []);
+  const [classes] = usePopularClass();
   return (
     <div>
       <PopularClassesCard classes={classes}></PopularClassesCard>
