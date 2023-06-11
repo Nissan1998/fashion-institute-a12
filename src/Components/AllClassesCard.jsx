@@ -14,7 +14,7 @@ const AllClassesCard = ({ classes }) => {
     console.log(item);
     if (user && user.email) {
       const courseItem = {
-        courseId: _id,
+        selectedId: _id,
         name,
         image,
         price,
@@ -57,7 +57,11 @@ const AllClassesCard = ({ classes }) => {
     }
   };
   return (
-    <div className="container relative mx-auto py-10">
+    <div
+      className={`container relative mx-auto md:p-20 ${
+        darkMode ? "bg-slate-800" : ""
+      }`}
+    >
       <div>
         {classes?.map((cl, index) => (
           <div
