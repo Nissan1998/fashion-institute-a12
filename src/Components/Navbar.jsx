@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import logo from "../assets/images/fashion.png";
 import { FaSun, FaMoon } from "react-icons/fa";
+import useCart from "../Hooks/useCart";
 const Navbar = () => {
   const { user, logOut, toggleDarkMode, darkMode } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const options = (
     <>
@@ -22,7 +24,7 @@ const Navbar = () => {
   const cartIcon = (
     <>
       <div className="flex-none">
-        <div className="dropdown dropdown-end">
+        <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
@@ -40,7 +42,7 @@ const Navbar = () => {
                 />
               </svg>
               <span className="badge indicator-item bg-blue-600 hover:bg-blue-700">
-                8
+                +{cart?.length || 0}
               </span>
             </div>
           </label>
@@ -49,12 +51,16 @@ const Navbar = () => {
             className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
-              <span className="font-bold text-lg text-black">8 Items</span>
+              <span className="font-bold text-lg text-black">
+                {cart?.length || 0} Items
+              </span>
               <span className="text-info">Subtotal: $999</span>
               <div className="card-actions">
-                <button className="rounded-full bg-blue-600 hover:bg-blue-800 btn-block">
-                  View cart
-                </button>
+                <Link to="/dashboard">
+                  <button className="rounded-full px-12 py-1 bg-blue-600 hover:bg-blue-800 btn-block">
+                    View cart
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -121,7 +127,7 @@ const Navbar = () => {
       <div className="navbar-end">
         {cartIcon}
         {user && (
-          <li className="list-none mr-5 font-semibold">
+          <li className="list-none mr-5 font-semibold ml-2">
             <Link to="/dashboard">Dashboard</Link>
           </li>
         )}

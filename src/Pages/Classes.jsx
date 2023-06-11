@@ -7,7 +7,7 @@ const Classes = () => {
   console.log(classes);
   return (
     <div>
-      <div className="py-20">
+      <div className="pt-20">
         <AllClassesCard classes={classes}></AllClassesCard>
       </div>
     </div>

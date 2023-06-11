@@ -3,9 +3,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import useCart from "../Hooks/useCart";
 
 const AllClassesCard = ({ classes }) => {
   const { darkMode, user } = useContext(AuthContext);
+  const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -31,8 +33,9 @@ const AllClassesCard = ({ classes }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
+            refetch();
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Add To Cart Successfully",
               showConfirmButton: false,
@@ -58,7 +61,7 @@ const AllClassesCard = ({ classes }) => {
   };
   return (
     <div
-      className={`container relative mx-auto md:p-20 ${
+      className={` h-full relative mx-auto md:p-20 ${
         darkMode ? "bg-slate-800" : ""
       }`}
     >
@@ -86,7 +89,13 @@ const AllClassesCard = ({ classes }) => {
                 <li>Total Students {cl?.total_students}</li>
                 <li>
                   Price:{" "}
-                  <span className="border-2 border-blue-600 rounded-full px-3 bg-blue-600 text-white font-bold">
+                  <span
+                    className={`border-2 ${
+                      cl.available_seats === 0
+                        ? "bg-white text-red-600"
+                        : "border-blue-600 bg-blue-600 text-white"
+                    }  rounded-full px-3 font-bold`}
+                  >
                     ${cl?.price}
                   </span>
                 </li>
@@ -116,11 +125,11 @@ const AllClassesCard = ({ classes }) => {
                 disabled={cl.available_seats === 0 ? true : false}
                 className={`${
                   cl.available_seats === 0
-                    ? "bg-white text-gray-400"
+                    ? "bg-white text-red-600"
                     : "bg-blue-600 hover:bg-blue-700 hover:translate hover:scale-105 text-white"
-                }   text-white px-4 rounded-full py-1 font-semibold`}
+                }  px-4 rounded-full py-1 font-semibold`}
               >
-                Select
+                {cl?.available_seats === 0 ? "BOOKED" : "Select"}
               </button>
             </div>
           </div>
