@@ -46,7 +46,6 @@ const Register = () => {
           timer: 2000,
         });
         handleUserData(newUser, data.name, data.photo);
-
         navigate(from, { replace: true });
         setError("");
       })
@@ -63,6 +62,14 @@ const Register = () => {
       photoURL: photoURL,
     })
       .then(() => {
+        const savesUser = { name: name, email: user?.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savesUser),
+        });
         console.log("user name updated");
       })
       .catch((error) => {
