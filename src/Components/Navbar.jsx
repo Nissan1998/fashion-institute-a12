@@ -4,13 +4,14 @@ import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import logo from "../assets/images/fashion.png";
 import { FaSun, FaMoon } from "react-icons/fa";
 import useCart from "../Hooks/useCart";
+import useUsers from "../Hooks/useUsers";
 const Navbar = () => {
   const { user, logOut, toggleDarkMode, darkMode } = useContext(AuthContext);
   const [cart] = useCart();
   const price = cart.reduce((sum, item) => item.price + sum, 0);
-  const isStudent = true;
-  const isInstructor = false;
-  const isAdmin = false;
+
+  const [users] = useUsers();
+  const ownRole = users.find((visitor) => visitor?.email === user?.email);
 
   const options = (
     <>
@@ -129,20 +130,24 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 font-semibold">{options}</ul>
       </div>
       <div className="navbar-end">
-        {isAdmin || isInstructor === true ? "" : cartIcon}
-        {user && isStudent && (
+        {ownRole?.role === "Admin" || ownRole?.role === "Instructor"
+          ? ""
+          : cartIcon}
+        {ownRole?.role === "Admin" || ownRole?.role === "Instructor" ? (
+          " "
+        ) : (
           <li className="list-none mr-5 font-semibold ml-2">
             <Link to="/dashboard/mycart">Dashboard</Link>
           </li>
         )}
-        {user && isInstructor && (
+        {ownRole?.role === "Instructor" && (
           <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/instructor">Dashboard</Link>
+            <Link to="/dashboard/addAClass">Dashboard</Link>
           </li>
         )}
-        {user && isAdmin && (
+        {ownRole?.role === "Admin" && (
           <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/admin">Dashboard</Link>
+            <Link to="/dashboard/manageClasses">Dashboard</Link>
           </li>
         )}
         {user && (

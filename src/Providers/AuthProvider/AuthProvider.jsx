@@ -47,8 +47,8 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  // darkMode Toggle
   const [darkMode, setDarkMode] = useState(false);
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
