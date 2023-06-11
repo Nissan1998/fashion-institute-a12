@@ -10,10 +10,23 @@ const AllClassesCard = ({ classes }) => {
   const location = useLocation();
 
   const handleAddToCart = (item) => {
+    const { _id, name, image, price, instructorName } = item;
     console.log(item);
-    if (user) {
+    if (user && user.email) {
+      const courseItem = {
+        courseId: _id,
+        name,
+        image,
+        price,
+        instructorName,
+        email: user.email,
+      };
       fetch("http://localhost:5000/carts", {
         method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(courseItem),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -67,7 +80,12 @@ const AllClassesCard = ({ classes }) => {
                 <h2 className="card-title">{cl?.name}</h2>
                 <li>Duration: {cl?.duration}</li>
                 <li>Total Students {cl?.total_students}</li>
-                <li>Price: {cl?.total_students}</li>
+                <li>
+                  Price:{" "}
+                  <span className="border-2 border-blue-600 rounded-full px-3 bg-blue-600 text-white font-bold">
+                    ${cl?.price}
+                  </span>
+                </li>
                 <li>Available Seats: {cl?.available_seats}</li>
 
                 <Rating
