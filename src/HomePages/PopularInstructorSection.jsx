@@ -17,7 +17,7 @@ const PopularInstructorSection = () => {
       </h2>
 
       <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2  gap-8 ">
-        {instructors?.map((instructor, index) => (
+        {instructors?.slice(0, 6).map((instructor, index) => (
           <PopularInstructorCard
             key={index}
             instructor={instructor}

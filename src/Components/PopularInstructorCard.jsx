@@ -26,6 +26,7 @@ const PopularInstructorCard = ({ instructor }) => {
         <li>Experience: {instructor.experience}</li>
         <li>Total Classes Conducted: {instructor.totalClassConducted}</li>
         <li>Available Slots: {instructor.availableSlots}</li>
+        <li>Total Students: {instructor.totalStudent}</li>
         <Rating
           style={{ maxWidth: 150 }}
           value={instructor.rating}

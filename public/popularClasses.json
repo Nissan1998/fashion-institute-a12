@@ -5,7 +5,9 @@
     "duration": "8 weeks",
     "total_students": 50,
     "rating": 4.5,
-    "price": 80
+    "price": 80,
+    "available_seats": 0,
+    "instructorName": "Sarah Thompson"
   },
   {
     "image": "https://i.ibb.co/zGCcDRg/2102-i305-033-realistic-sewing-machine.jpg",
@@ -13,7 +15,9 @@
     "duration": "12 weeks",
     "total_students": 80,
     "rating": 4.2,
-    "price": 100
+    "price": 100,
+    "available_seats": 15,
+    "instructorName": "Jessica Wilson"
   },
   {
     "image": "https://houseofdezign.com/wp-content/uploads/2021/11/1.jpg",
@@ -21,7 +25,9 @@
     "duration": "10 weeks",
     "total_students": 35,
     "rating": 4.8,
-    "price": 56
+    "price": 56,
+    "available_seats": 25,
+    "instructorName": "Emily Johnson"
   },
   {
     "image": "https://i.ibb.co/Ycps7QM/pd157-element-set-gloy-19.jpg",
@@ -29,7 +35,9 @@
     "duration": "6 weeks",
     "total_students": 60,
     "rating": 4.3,
-    "price": 62
+    "price": 62,
+    "available_seats": 50,
+    "instructorName": "Michael Davis"
   },
   {
     "image": "https://i.ibb.co/JHVNNKM/portrait-male-personal-shopper-working.jpg",
@@ -37,7 +45,9 @@
     "duration": "8 weeks",
     "total_students": 70,
     "rating": 4.6,
-    "price": 75
+    "price": 75,
+    "available_seats": 24,
+    "instructorName": "Rabiul Islam"
   },
   {
     "image": "https://i.ibb.co/JvK4nLL/1178.jpg",
@@ -45,7 +55,9 @@
     "duration": "10 weeks",
     "total_students": 45,
     "rating": 4.4,
-    "price": 65
+    "price": 65,
+    "available_seats": 28,
+    "instructorName": "Daniel Brown"
   },
   {
     "image": "https://i.ibb.co/bzYKX06/8141.jpg",
@@ -53,7 +65,9 @@
     "duration": "8 weeks",
     "total_students": 55,
     "rating": 4.7,
-    "price": 70
+    "price": 70,
+    "available_seats": 40,
+    "instructorName": "Olivia Martinez"
   },
   {
     "image": "https://i0.wp.com/textilelearner.net/wp-content/uploads/2021/05/fashion-marketing-strategy.jpg?resize=600%2C400&ssl=1",
@@ -61,7 +75,9 @@
     "duration": "12 weeks",
     "total_students": 75,
     "rating": 4.1,
-    "price": 55
+    "price": 55,
+    "available_seats": 35,
+    "instructorName": "James Garcia"
   },
   {
     "image": "https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_568,c_scale/jackets/9781501334245.jpg",
@@ -69,7 +85,9 @@
     "duration": "10 weeks",
     "total_students": 40,
     "rating": 4.9,
-    "price": 85
+    "price": 85,
+    "available_seats": 25,
+    "instructorName": "David Williams"
   },
   {
     "image": "https://www.designersnexus.com/wp-content/uploads/Article-Portfolio.png",
@@ -77,6 +95,8 @@
     "duration": "6 weeks",
     "total_students": 65,
     "rating": 4.0,
-    "price": 99
+    "price": 99,
+    "available_seats": 2,
+    "instructorName": "Sophia Thomas"
   }
 ]

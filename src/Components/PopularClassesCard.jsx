@@ -16,7 +16,7 @@ const PopularClassesCard = ({ classes }) => {
             Popular Classes
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 ">
-            {classes?.map((item, index) => (
+            {classes.slice(0, 6)?.map((item, index) => (
               <Tilt key={index}>
                 <div
                   key={index}
@@ -35,6 +35,10 @@ const PopularClassesCard = ({ classes }) => {
                   <p className="text-gray-600 mb-2">{item?.duration}</p>
                   <p className="text-gray-600 mb-2">
                     Total Students: {item?.total_students}
+                  </p>
+                  <p className="text-gray-600 mb-2">
+                    Instructor:{" "}
+                    <span className="font-semibold">{item.instructorName}</span>
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex">
