@@ -7,6 +7,10 @@ import useCart from "../Hooks/useCart";
 const Navbar = () => {
   const { user, logOut, toggleDarkMode, darkMode } = useContext(AuthContext);
   const [cart] = useCart();
+  const price = cart.reduce((sum, item) => item.price + sum, 0);
+  const isStudent = true;
+  const isInstructor = false;
+  const isAdmin = false;
 
   const options = (
     <>
@@ -14,7 +18,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>Instructors</Link>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li>
         <Link to="/classes"> Classes</Link>
@@ -23,13 +27,13 @@ const Navbar = () => {
   );
   const cartIcon = (
     <>
-      <div className="flex-none">
+      <div className="flex-none mr-6">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
             <div className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-14"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -54,9 +58,9 @@ const Navbar = () => {
               <span className="font-bold text-lg text-black">
                 {cart?.length || 0} Items
               </span>
-              <span className="text-info">Subtotal: $999</span>
+              <span className="text-info">Subtotal: ${price}</span>
               <div className="card-actions">
-                <Link to="/dashboard">
+                <Link to="dashboard/mycart">
                   <button className="rounded-full px-12 py-1 bg-blue-600 hover:bg-blue-800 btn-block">
                     View cart
                   </button>
@@ -125,10 +129,20 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 font-semibold">{options}</ul>
       </div>
       <div className="navbar-end">
-        {cartIcon}
-        {user && (
+        {isAdmin || isInstructor === true ? "" : cartIcon}
+        {user && isStudent && (
           <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard/mycart">Dashboard</Link>
+          </li>
+        )}
+        {user && isInstructor && (
+          <li className="list-none mr-5 font-semibold ml-2">
+            <Link to="/dashboard/instructor">Dashboard</Link>
+          </li>
+        )}
+        {user && isAdmin && (
+          <li className="list-none mr-5 font-semibold ml-2">
+            <Link to="/dashboard/admin">Dashboard</Link>
           </li>
         )}
         {user && (
