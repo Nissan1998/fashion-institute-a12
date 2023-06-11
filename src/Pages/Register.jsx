@@ -69,7 +69,13 @@ const Register = () => {
             "content-type": "application/json",
           },
           body: JSON.stringify(savesUser),
-        });
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              navigate(from, { replace: true });
+            }
+          });
         console.log("user name updated");
       })
       .catch((error) => {
@@ -82,12 +88,27 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        setError("");
         const user = result.user;
-        navigate(from, { replace: true });
+        const savedUser = { name: user.displayName, email: user.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              navigate(from, { replace: true });
+            }
+          });
         console.log(user);
+        navigate(from, { replace: true });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (

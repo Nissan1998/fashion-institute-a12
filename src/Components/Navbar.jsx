@@ -147,9 +147,9 @@ const Navbar = () => {
         )}
         {user && (
           <img
-            title={user?.displayName}
+            title={user.displayName}
             className="btn-circle mr-3"
-            src={user?.photoURL}
+            src={user.photoURL}
             alt=""
           />
         )}
