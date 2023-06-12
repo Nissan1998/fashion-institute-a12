@@ -4,12 +4,15 @@ import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import useCart from "../Hooks/useCart";
+import useUsers from "../Hooks/useUsers";
 
 const AllClassesCard = ({ classes }) => {
   const { darkMode, user } = useContext(AuthContext);
   const [, refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
+  const [users] = useUsers();
+  const ownRole = users.find((visitor) => visitor?.email === user?.email);
 
   const handleAddToCart = (item) => {
     const { _id, name, image, price, instructorName } = item;
@@ -122,10 +125,18 @@ const AllClassesCard = ({ classes }) => {
             <div className="absolute left-1/2 md:left-auto md:right-0 md:top-1/2 mx-5">
               <button
                 onClick={() => handleAddToCart(cl)}
-                disabled={cl.available_seats === 0 ? true : false}
+                disabled={
+                  cl.available_seats === 0 ||
+                  ownRole?.role === "Admin" ||
+                  ownRole?.role === "Instructor"
+                    ? true
+                    : false
+                }
                 className={`${
-                  cl.available_seats === 0
-                    ? "bg-white text-red-600"
+                  cl.available_seats === 0 ||
+                  ownRole?.role === "Admin" ||
+                  ownRole?.role === "Instructor"
+                    ? "bg-white text-gray-500"
                     : "bg-blue-600 hover:bg-blue-700 hover:translate hover:scale-105 text-white"
                 }  px-4 rounded-full py-1 font-semibold`}
               >

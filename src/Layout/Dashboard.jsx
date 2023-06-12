@@ -8,6 +8,7 @@ import {
   FaUserGraduate,
   FaBookReader,
   FaUsers,
+  FaPen,
 } from "react-icons/fa";
 import useUsers from "../Hooks/useUsers";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
@@ -61,7 +62,7 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink to="addAClass">
-                  <FaShoppingCart /> Add A Class
+                  <FaPen /> Add A Class
                 </NavLink>
               </li>
               <li>
@@ -106,7 +107,7 @@ const Dashboard = () => {
           </li>
           <li>
             <Link to="/instructors">
-              <FaUserGraduate /> Instructors
+              <FaUserGraduate /> All Instructors
             </Link>
           </li>
           <li>
