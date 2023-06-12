@@ -6,7 +6,6 @@ import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import Swal from "sweetalert2";
-import useCart from "../Hooks/useCart";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,10 +13,8 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("login page location", location);
+
   const from = location.state?.from?.pathname || "/";
-  const [, refetch] = useCart();
-  console.log("refetch", refetch);
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -53,7 +50,6 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate(from, { replace: true });
-        refetch();
       })
       .catch((error) => {
         console.log(error);

@@ -1,17 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import logo from "../assets/images/fashion.png";
 import { FaSun, FaMoon } from "react-icons/fa";
 import useCart from "../Hooks/useCart";
 import useUsers from "../Hooks/useUsers";
+import useInstructor from "../Hooks/useInstructor";
+import useAdmin from "../Hooks/useAdmin";
 const Navbar = () => {
   const { user, logOut, toggleDarkMode, darkMode, loading } =
     useContext(AuthContext);
   const [cart, refetch, isLoading] = useCart();
   refetch();
   const [users] = useUsers();
-  const ownRole = users.find((visitor) => visitor?.email === user?.email);
+  const ownRole = users?.find((visitor) => visitor?.email === user?.email);
+  // const [ownRole, setRole] = useState("");
+  // const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructor();
+  // if (isAdmin) {
+  //   setRole("Admin");
+  // } else if (isInstructor) {
+  //   setRole("Instructor");
+  // }
 
   // const price = cart?.reduce((sum, item) => item.price + sum, 0);
 

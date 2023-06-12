@@ -12,13 +12,17 @@ import {
 } from "react-icons/fa";
 import useUsers from "../Hooks/useUsers";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
+import useAdmin from "../Hooks/useAdmin";
+import useInstructor from "../Hooks/useInstructor";
 
 const Dashboard = () => {
   const [users] = useUsers();
 
   const { user } = useContext(AuthContext);
 
-  const ownRole = users.find((visitor) => visitor.email === user?.email);
+  // const ownRole = users.find((visitor) => visitor.email === user?.email);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <div className="drawer drawer-mobile">
@@ -42,7 +46,7 @@ const Dashboard = () => {
         <ul className="menu text-white font-bold p-4 w-80 h-full bg-gradient-to-t from-purple-950 to-purple-700">
           {/* Sidebar content here */}
 
-          {ownRole?.role === "Admin" && (
+          {isAdmin && (
             <>
               <li>
                 <NavLink to="manageClasses">
@@ -58,7 +62,7 @@ const Dashboard = () => {
             </>
           )}
 
-          {ownRole?.role === "Instructor" && (
+          {isInstructor && (
             <>
               <li>
                 <NavLink to="addAClass">
@@ -74,7 +78,7 @@ const Dashboard = () => {
             </>
           )}
 
-          {ownRole?.role === "Admin" || ownRole?.role === "Instructor" ? (
+          {isAdmin || isInstructor ? (
             ""
           ) : (
             <>
