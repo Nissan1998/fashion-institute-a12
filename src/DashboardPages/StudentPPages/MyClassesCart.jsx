@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import useCart from "../../Hooks/useCart";
 import MyCart from "./MyCart";
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
 const MyClassesCart = () => {
-  const [cart, refetch] = useCart();
-  const price = cart.reduce((sum, item) => item.price + sum, 0);
+  const [cart, refetch, isLoading] = useCart();
+  const { loading } = useContext(AuthContext);
+  if (isLoading || loading) {
+    return <p>Loading..............</p>;
+  }
+  const price = cart?.reduce((sum, item) => item.price + sum, 0);
   return (
     <div className="bg-gradient-to-r p-2 from-orange-300 to-orange-300 text-black max-w-5xl rounded-xl w-full">
       <div className="flex justify-between items-center rounded-full  bg-gradient-to-r from-pink-400 to-purple-700 p-2  font-bold">

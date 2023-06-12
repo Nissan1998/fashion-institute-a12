@@ -6,12 +6,14 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import useCart from "../Hooks/useCart";
 import useUsers from "../Hooks/useUsers";
 const Navbar = () => {
-  const { user, logOut, toggleDarkMode, darkMode } = useContext(AuthContext);
-  const [cart] = useCart();
-  const price = cart.reduce((sum, item) => item.price + sum, 0);
-
+  const { user, logOut, toggleDarkMode, darkMode, loading } =
+    useContext(AuthContext);
+  const [cart, refetch, isLoading] = useCart();
+  refetch();
   const [users] = useUsers();
   const ownRole = users.find((visitor) => visitor?.email === user?.email);
+
+  // const price = cart?.reduce((sum, item) => item.price + sum, 0);
 
   const options = (
     <>
@@ -46,9 +48,11 @@ const Navbar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="badge indicator-item bg-blue-600 hover:bg-blue-700">
-                +{cart?.length || 0}
-              </span>
+              {user && (
+                <span className="badge indicator-item bg-blue-600 hover:bg-blue-700">
+                  +{cart?.length || 0}
+                </span>
+              )}
             </div>
           </label>
           <div
@@ -59,7 +63,11 @@ const Navbar = () => {
               <span className="font-bold text-lg text-black">
                 {cart?.length || 0} Items
               </span>
-              <span className="text-info">Subtotal: ${price}</span>
+              {/* {ownRole === "Admin" || ownRole === "Instructor" ? (
+                ""
+              ) : (
+                <span className="text-info">Subtotal: ${price}</span>
+              )} */}
               <div className="card-actions">
                 <Link to="dashboard/mycart">
                   <button className="rounded-full px-12 py-1 bg-blue-600 hover:bg-blue-800 btn-block">
@@ -133,19 +141,19 @@ const Navbar = () => {
         {ownRole?.role === "Admin" || ownRole?.role === "Instructor"
           ? ""
           : cartIcon}
-        {ownRole?.role === "Admin" || ownRole?.role === "Instructor" ? (
-          " "
-        ) : (
-          <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/mycart">Dashboard</Link>
-          </li>
-        )}
-        {ownRole?.role === "Instructor" && (
+        {ownRole?.role === "Admin" || ownRole?.role === "Instructor"
+          ? " "
+          : user && (
+              <li className="list-none mr-5 font-semibold ml-2">
+                <Link to="/dashboard/mycart">Dashboard</Link>
+              </li>
+            )}
+        {user && ownRole?.role === "Instructor" && (
           <li className="list-none mr-5 font-semibold ml-2">
             <Link to="/dashboard/addAClass">Dashboard</Link>
           </li>
         )}
-        {ownRole?.role === "Admin" && (
+        {user && ownRole?.role === "Admin" && (
           <li className="list-none mr-5 font-semibold ml-2">
             <Link to="/dashboard/manageClasses">Dashboard</Link>
           </li>
