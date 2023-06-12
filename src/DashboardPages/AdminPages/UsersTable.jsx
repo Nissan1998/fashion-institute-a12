@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const UsersTable = ({ users, refetch }) => {
   // make Admin action
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://fashion-institute-server.vercel.app/users/admin/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -25,9 +25,12 @@ const UsersTable = ({ users, refetch }) => {
 
   // make instructor action
   const handleMakeInstructor = (id) => {
-    fetch(`http://localhost:5000/users/instructor/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://fashion-institute-server.vercel.app/users/instructor/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

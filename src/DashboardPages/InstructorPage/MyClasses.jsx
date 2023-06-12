@@ -9,7 +9,7 @@ const MyClasses = () => {
   const { name } = classes;
   console.log(classes, "instructor class-------------");
   useEffect(() => {
-    fetch(`http://localhost:5000/classes/${user?.email}`)
+    fetch(`https://fashion-institute-server.vercel.app/classes/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyClasses(data));
   }, [user]);

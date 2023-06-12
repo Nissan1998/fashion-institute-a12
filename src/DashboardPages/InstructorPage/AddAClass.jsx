@@ -39,7 +39,7 @@ const AddAClass = () => {
             total_students: parseInt("0"),
           };
           console.log(classDetails);
-          fetch("http://localhost:5000/classes", {
+          fetch("https://fashion-institute-server.vercel.app/classes", {
             method: "POST",
             headers: {
               "content-type": "application/json",

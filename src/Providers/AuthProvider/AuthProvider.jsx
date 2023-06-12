@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
       // set jwt
       if (loggedUser) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://fashion-institute-server.vercel.app/jwt", {
             email: loggedUser.email,
           })
           .then((data) => {

@@ -25,4 +25,4 @@ This project is a website that offers online classes on various subjects. It pro
 
 ## Live Site
 
-Visit the live site [here](https://www.example.com).
+Visit the live site [here](https://fashion-institute-f0315.web.app/).
