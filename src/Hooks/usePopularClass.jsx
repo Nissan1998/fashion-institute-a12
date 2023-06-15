@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const usePopularClass = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    fetch("https://fashion-institute-server.vercel.app/classes")
+    fetch("http://localhost:5000/classes")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);

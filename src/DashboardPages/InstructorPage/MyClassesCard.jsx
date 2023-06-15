@@ -28,7 +28,7 @@ const MyClassesCard = ({ course, index }) => {
         <p className="text-right">${course.price}</p>
       </td>
       <td>
-        <p className="text-center">{course.modules} modules</p>
+        <p className="text-center">{course.modules}</p>
       </td>
       <td>
         <p className="text-center">{course.duration}</p>

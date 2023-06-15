@@ -60,6 +60,17 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  // Get Next Year
+
+  const getNextYearDate = () => {
+    const currentDate = new Date();
+    const nextYearDate = new Date();
+    nextYearDate.setFullYear(currentDate.getFullYear() + 1);
+    return nextYearDate;
+  };
+
+  const nextYear = getNextYearDate();
+
   // darkMode Toggle
   const [darkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => {
@@ -74,6 +85,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     darkMode,
     toggleDarkMode,
+    nextYear,
   };
 
   return (

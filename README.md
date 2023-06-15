@@ -17,6 +17,7 @@ This project is a website that offers online classes on various subjects. It pro
 ## Technologies Used
 
 - React.js
+
 - Tailwind CSS
 - Axios
 - React Router

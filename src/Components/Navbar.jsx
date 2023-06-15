@@ -12,8 +12,10 @@ const Navbar = () => {
     useContext(AuthContext);
   const [cart, refetch, isLoading] = useCart();
   refetch();
-  const [users] = useUsers();
-  const ownRole = users?.find((visitor) => visitor?.email === user?.email);
+  // const [users] = useUsers();
+  // const ownRole = users?.find((visitor) => visitor?.email === user?.email);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   // const [ownRole, setRole] = useState("");
   // const [isAdmin] = useAdmin();
   // const [isInstructor] = useInstructor();
@@ -148,24 +150,22 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 font-semibold">{options}</ul>
       </div>
       <div className="navbar-end">
-        {ownRole?.role === "Admin" || ownRole?.role === "Instructor"
-          ? ""
-          : cartIcon}
-        {ownRole?.role === "Admin" || ownRole?.role === "Instructor"
+        {isAdmin || isInstructor ? "" : cartIcon}
+        {isAdmin || isInstructor
           ? " "
           : user && (
               <li className="list-none mr-5 font-semibold ml-2">
-                <Link to="/dashboard/mycart">Dashboard</Link>
+                <Link to="/dashboard/mycart">Student Dashboard</Link>
               </li>
             )}
-        {user && ownRole?.role === "Instructor" && (
+        {user && isInstructor && (
           <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/addAClass">Dashboard</Link>
+            <Link to="/dashboard/addAClass">Instructor Dashboard</Link>
           </li>
         )}
-        {user && ownRole?.role === "Admin" && (
+        {user && isAdmin && (
           <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/manageClasses">Dashboard</Link>
+            <Link to="/dashboard/manageClasses">Admin Dashboard</Link>
           </li>
         )}
         {user && (

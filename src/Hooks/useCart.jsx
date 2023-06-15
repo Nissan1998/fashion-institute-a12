@@ -12,7 +12,6 @@ const useCart = () => {
     isLoading,
   } = useQuery({
     queryKey: ["carts", user?.email],
-    enabled: !loading,
     queryFn: async () => {
       const response = await axiosSecure(`/carts?email=${user?.email}`);
       console.log("response", response);

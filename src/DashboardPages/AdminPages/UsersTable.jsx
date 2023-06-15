@@ -5,22 +5,33 @@ import Swal from "sweetalert2";
 const UsersTable = ({ users, refetch }) => {
   // make Admin action
   const handleMakeAdmin = (id) => {
-    fetch(`https://fashion-institute-server.vercel.app/users/admin/${id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Made Admin",
-            timer: 1500,
+    Swal.fire({
+      title: "YOU WANT TO MAKE HIM AS ADMIN?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, ADMIN NOW",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://fashion-institute-server.vercel.app/users/admin/${id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              refetch();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Made Admin",
+                timer: 1500,
+              });
+            }
           });
-        }
-      });
+      }
+    });
   };
 
   // make instructor action
@@ -51,12 +62,18 @@ const UsersTable = ({ users, refetch }) => {
       <table className="table">
         {/* head */}
         <thead>
-          <tr className="uppercase ">
+          <tr className="uppercase  ">
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Role</th>
-            <th className="text-center">Action</th>
+            <th>
+              <p className="w-2/3 text-center bg-lime-400 rounded-full font-bold">
+                Role
+              </p>
+            </th>
+            <th className="text-center">
+              <p className="bg-red-600 text-white rounded-full">Action</p>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -73,7 +90,7 @@ const UsersTable = ({ users, refetch }) => {
                   </p>
                 )}
                 {user?.role === "Instructor" && (
-                  <p className="text-center bg-red-700  text-white rounded-full px-2 py-px text-sm  mr-5">
+                  <p className="text-center bg-yellow-300  text-gray-900 rounded-full px-2 py-px text-sm  mr-5">
                     {user.role}
                   </p>
                 )}
