@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ price, cart }) => {
+const CheckoutForm = ({ price, cart, refetch }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [axiosSecure] = useAxiosSecure();
@@ -72,11 +72,12 @@ const CheckoutForm = ({ price, cart }) => {
         status: "Enrolled",
         selectedCourse: cart.map((course) => course._id),
         coursesName: cart.map((course) => course.name),
-        coursesId: cart.map((course) => course._id),
+        coursesId: cart.map((course) => course.selectedId),
       };
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
         if (res.data.insertedResult) {
+          refetch();
           // payment info updated
           Swal.fire({
             position: "top-end",

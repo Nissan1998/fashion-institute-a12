@@ -17,6 +17,7 @@ import AddAClass from "../DashboardPages/InstructorPage/AddAClass";
 import MyClasses from "../DashboardPages/InstructorPage/MyClasses";
 import Payment from "../DashboardPages/StudentPPages/PaymentPages/Payment";
 import PaymentHistory from "../DashboardPages/StudentPPages/PaymentPages/PaymentHistory";
+import UpdateClass from "../DashboardPages/InstructorPage/UpdateClass";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: "paymentHistory",
         element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "updateClass/:id",
+        element: <UpdateClass />,
       },
     ],
   },

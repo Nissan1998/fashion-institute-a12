@@ -6,8 +6,6 @@ const MyClasses = () => {
   // /classes?email=${user?.email
   const { user } = useContext(AuthContext);
   const [classes, setMyClasses] = useState([]);
-  const { name } = classes;
-  console.log(classes, "instructor class-------------");
   useEffect(() => {
     fetch(`https://fashion-institute-server.vercel.app/classes/${user?.email}`)
       .then((res) => res.json())

@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from "react";
 import girl from "../assets/images/girls.jpg";
+import useCounter from "../Components/useCounter";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const ExtraSection = () => {
   const [progress, setProgress] = useState(0);
+  const num = useCounter();
 
   useEffect(() => {
     // Simulate progress updates
-    const interval = setInterval(() => {
-      setProgress((prevProgress) => prevProgress + 1);
-    }, 100);
+    AOS.init();
 
-    return () => clearInterval(interval);
+    if (AOS) {
+      const interval = setInterval(() => {
+        setProgress((prevProgress) => prevProgress + 1);
+      }, 100);
+      return () => clearInterval(interval);
+    }
   }, [progress]);
 
   return (
-    <div>
+    <div data-aos="fade-up">
       <div className="container mx-auto my-5 md:flex border-8 rounded-xl border-blue-200 ">
         <div
           style={{
@@ -74,12 +82,14 @@ const ExtraSection = () => {
                 max="100"
               ></progress>
             </div>
-            <button className="rounded-full px-4 py-1  text-white bg-blue-600 hover:bg-blue-700">
-              Join Us Now
-            </button>
+            <Link to="login">
+              <button className="rounded-full px-4 py-1  text-white bg-blue-600 hover:bg-blue-700">
+                Join Us Now
+              </button>
+            </Link>
           </div>
         </div>
-        <div className="bg-red-500">
+        <div>
           <img className="h-full object-cover" src={girl} alt="girl" />
         </div>
       </div>

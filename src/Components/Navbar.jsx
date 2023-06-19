@@ -12,20 +12,11 @@ const Navbar = () => {
     useContext(AuthContext);
   const [cart, refetch, isLoading] = useCart();
   refetch();
-  // const [users] = useUsers();
-  // const ownRole = users?.find((visitor) => visitor?.email === user?.email);
+
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-  // const [ownRole, setRole] = useState("");
-  // const [isAdmin] = useAdmin();
-  // const [isInstructor] = useInstructor();
-  // if (isAdmin) {
-  //   setRole("Admin");
-  // } else if (isInstructor) {
-  //   setRole("Instructor");
-  // }
 
-  // const price = cart?.reduce((sum, item) => item.price + sum, 0);
+  const price = cart?.reduce((sum, item) => item.price + sum, 0);
 
   const options = (
     <>
@@ -75,11 +66,9 @@ const Navbar = () => {
               <span className="font-bold text-lg text-black">
                 {cart?.length || 0} Items
               </span>
-              {/* {ownRole === "Admin" || ownRole === "Instructor" ? (
-                ""
-              ) : (
-                <span className="text-info">Subtotal: ${price}</span>
-              )} */}
+
+              <span className="text-info">Subtotal: ${price}</span>
+
               <div className="card-actions">
                 <Link to="dashboard/mycart">
                   <button className="rounded-full px-12 py-1 bg-blue-600 hover:bg-blue-800 btn-block">

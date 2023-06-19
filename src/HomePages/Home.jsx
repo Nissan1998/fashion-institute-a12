@@ -8,12 +8,14 @@ import ProgressBar from "../Components/ProgressBar";
 
 const Home = () => {
   const { darkMode } = useContext(AuthContext);
+
   return (
     <div>
       <Banner></Banner>
       <PopularClassSection></PopularClassSection>
-      <PopularInstructorSection></PopularInstructorSection>
       <ProgressBar />
+      <PopularInstructorSection></PopularInstructorSection>
+
       <div
         className={`${darkMode ? "bg-slate-800" : "bg-base-200"} p-10 md:p-20`}
       >

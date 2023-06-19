@@ -5,7 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import useCart from "../../../Hooks/useCart";
 
 const Payment = () => {
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
 
   const total = cart?.reduce((sum, item) => sum + item.price, 0);
   const price = parseFloat(total.toFixed(2));
@@ -20,7 +20,11 @@ const Payment = () => {
       <div className="bg-white p-2 rounded-lg">
         <div className="bg-gradient-to-tl from-red-700 to-slate-700 text-white w-96 p-5 rounded-xl ">
           <Elements stripe={stripePromise}>
-            <CheckoutForm cart={cart} price={price}></CheckoutForm>
+            <CheckoutForm
+              cart={cart}
+              price={price}
+              refetch={refetch}
+            ></CheckoutForm>
           </Elements>
         </div>
       </div>
