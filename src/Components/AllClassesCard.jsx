@@ -1,8 +1,8 @@
 import { Rating } from "@smastrom/react-rating";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useUsers from "../Hooks/useUsers";
 
@@ -64,11 +64,18 @@ const AllClassesCard = ({ classes }) => {
   };
   return (
     <div
-      className={` h-full relative mx-auto md:p-20 ${
+      className={` card-list-container h-full relative mx-auto md:p-20  ${
         darkMode ? "bg-slate-800" : ""
       }`}
     >
-      <div>
+      <div
+        className={`text-3xl my-5 text-center underline decoration-wavy font-bold ${
+          darkMode ? "text-white" : ""
+        }`}
+      >
+        Our Classes
+      </div>
+      <div className="card-list">
         {classes?.map((cl, index) => (
           <div
             key={index}

@@ -21,7 +21,7 @@ const MyClassesCart = () => {
           Total Price: ${price}
         </h3>
         <Link to="/dashboard/payment">
-          <button className="rounded-full bg-gradient-to-r from-yellow-500 text-white  to-purple-700 px-5 py-1 hover:from-purple-700 hover:to-orange-500 ">
+          <button className=" bg-gradient-to-r from-blue-500 text-white rounded-xl  to-red-600 px-5 py-1 hover:from-purple-700 hover:to-orange-500 ">
             Pay via Card
           </button>
         </Link>

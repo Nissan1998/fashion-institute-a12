@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import LazyLoad from "react-lazy-load";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import Tilt from "react-parallax-tilt";
+import { HiBadgeCheck } from "react-icons/hi";
 
 const PopularClassesCard = ({ classes }) => {
   const { darkMode } = useContext(AuthContext);
@@ -26,11 +27,16 @@ const PopularClassesCard = ({ classes }) => {
                     <img
                       src={item?.image}
                       alt={item?.name}
-                      className="w-full h-52 object-cover mb-4 rounded-2xl"
+                      className="w-full h-52 object-cover mb-4 rounded-2xl border border-blue-500"
                     />
                   </LazyLoad>
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
                     {item.name}
+                    {item.total_students >= 70 ? (
+                      <HiBadgeCheck className="inline-block text-blue-600" />
+                    ) : (
+                      ""
+                    )}
                   </h3>
                   <p className="text-gray-600 mb-2">{item?.duration}</p>
                   <p className="text-gray-600 mb-2">

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import logo from "../assets/images/fashion.png";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { BsFillPersonVcardFill } from "react-icons/bs";
+import { MdAdminPanelSettings, MdDashboardCustomize } from "react-icons/md";
 import useCart from "../Hooks/useCart";
-import useUsers from "../Hooks/useUsers";
 import useInstructor from "../Hooks/useInstructor";
 import useAdmin from "../Hooks/useAdmin";
 const Navbar = () => {
@@ -144,17 +145,26 @@ const Navbar = () => {
           ? " "
           : user && (
               <li className="list-none mr-5 font-semibold ml-2">
-                <Link to="/dashboard/mycart">Student Dashboard</Link>
+                <Link to="/dashboard/mycart">
+                  <BsFillPersonVcardFill className="inline-block text-xl mb-1" />{" "}
+                  Dashboard
+                </Link>
               </li>
             )}
         {user && isInstructor && (
-          <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/addAClass">Instructor Dashboard</Link>
+          <li className="list-none  mr-5 font-semibold ml-2">
+            <Link to="/dashboard/addAClass">
+              <MdDashboardCustomize className="inline-block text-2xl" />{" "}
+              Dashboard
+            </Link>
           </li>
         )}
         {user && isAdmin && (
           <li className="list-none mr-5 font-semibold ml-2">
-            <Link to="/dashboard/manageClasses">Admin Dashboard</Link>
+            <Link to="/dashboard/manageClasses">
+              <MdAdminPanelSettings className="inline-block text-3xl" />{" "}
+              Dashboard
+            </Link>
           </li>
         )}
         {user && (
