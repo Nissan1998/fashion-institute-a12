@@ -13,13 +13,13 @@ const ExtraSection = () => {
     // Simulate progress updates
     AOS.init();
 
-    if (AOS) {
+    if (num) {
       const interval = setInterval(() => {
         setProgress((prevProgress) => prevProgress + 1);
       }, 100);
       return () => clearInterval(interval);
     }
-  }, [progress]);
+  }, [progress, num]);
 
   return (
     <div data-aos="fade-up">

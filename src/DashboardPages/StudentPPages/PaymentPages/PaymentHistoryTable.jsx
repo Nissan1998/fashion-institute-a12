@@ -7,6 +7,7 @@ const PaymentHistoryTable = ({ payments }) => {
         <table className="w-full table-auto">
           <thead>
             <tr>
+              <th className="px-4 py-2">SL</th>
               <th className="px-4 py-2">TransactionId ID</th>
               <th className="px-4 py-2">Date</th>
               <th className="px-4 py-2">Course Quantity</th>
@@ -15,11 +16,12 @@ const PaymentHistoryTable = ({ payments }) => {
             </tr>
           </thead>
           <tbody>
-            {payments.map((payment) => (
+            {payments.map((payment, index) => (
               <tr
                 className="hover:bg-purple-400 hover:text-white"
                 key={payment.id}
               >
+                <td className="border px-4 py-2">{index + 1}</td>
                 <td className="border px-4 py-2">{payment.transactionId}</td>
                 <td className="border px-4 py-2">
                   {new Date(payment.date).toLocaleString()}

@@ -5,7 +5,9 @@ const useEnrolledClasses = () => {
   const { user } = useContext(AuthContext);
   const [enrolledClasses, setClasses] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/paidCourse?email=${user?.email}`)
+    fetch(
+      `https://fashion-institute-server.vercel.app/paidCourse?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setClasses(data));
   });

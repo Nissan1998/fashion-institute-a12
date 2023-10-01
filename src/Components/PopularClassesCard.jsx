@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import LazyLoad from "react-lazy-load";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import Tilt from "react-parallax-tilt";
 import { HiBadgeCheck } from "react-icons/hi";
@@ -23,13 +22,12 @@ const PopularClassesCard = ({ classes }) => {
                   key={index}
                   className="bg-white h-full rounded-lg shadow-md p-6 transform hover:scale-105 transition duration-300 ease-in-out"
                 >
-                  <LazyLoad>
-                    <img
-                      src={item?.image}
-                      alt={item?.name}
-                      className="w-full h-52 object-cover mb-4 rounded-2xl border border-blue-500"
-                    />
-                  </LazyLoad>
+                  <img
+                    src={item?.image}
+                    alt={item?.name}
+                    className="w-full h-52 object-cover mb-4 rounded-2xl border border-blue-500"
+                  />
+
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
                     {item.name}
                     {item.total_students >= 70 ? (
