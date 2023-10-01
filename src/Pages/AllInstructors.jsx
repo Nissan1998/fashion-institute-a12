@@ -10,6 +10,9 @@ const AllInstructors = () => {
   return (
     <div className={`${darkMode ? "bg-slate-900" : "bg-base-200"}`}>
       <InstructorsBanner />
+      <h1 className="text-center underline mt-10 text-2xl font-bold">
+        Meet Our All Instructors
+      </h1>
       <div className="grid grid-cols-1 container mx-auto pt-24  sm:grid-cols-2 md:grid-cols-2  gap-8 ">
         {instructors?.map((instructor, index) => (
           <PopularInstructorCard
