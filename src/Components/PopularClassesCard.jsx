@@ -29,7 +29,9 @@ const PopularClassesCard = ({ classes }) => {
                   />
 
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {item.name}
+                    {item.name.length <= 20
+                      ? item.name
+                      : item.name.slice(0, 20) + "..."}
                     {item.total_students >= 70 ? (
                       <HiBadgeCheck className="inline-block text-blue-600" />
                     ) : (
